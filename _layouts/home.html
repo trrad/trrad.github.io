@@ -7,7 +7,7 @@
 
     <div>
 
-      <header class="header-background">
+      <header class="header-background" id="particles-js">
 
         <div class="clearfix border-bottom-thick header-border">
           <ul class="list-reset right py-1 header-text font-smoothing">
@@ -57,5 +57,14 @@
     {% include footer.html %}
 
   </body>
+    
+    
+  <script>
+    /* particlesJS.load(@dom-id, @path-json, @callback (optional)); */
+    particlesJS.load('particles-js', 'assets/particles.json', function() {
+      console.log('callback - particles.js config loaded');
+    });    
+    </script>
+
 
 </html>
