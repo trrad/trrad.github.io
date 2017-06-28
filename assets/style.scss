@@ -7,3 +7,5 @@
 @import
         "theme-{{ site.theme_color | default: "black" }}.scss"
 ;
+
+.particles-js-canvas-el { margin-top:-100%; padding-top:43px; }

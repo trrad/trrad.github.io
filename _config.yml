@@ -13,7 +13,7 @@
 # you will see them accessed via {{ site.title }}, {{ site.github_repo }}, and so on.
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
-title: Hi, I'm Tim.
+title: Tim Radliffe
 description: I build websites, offer quantitative e-commerce consulting and write about machine learning.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
@@ -27,7 +27,7 @@ social_username: t_radcliffe
 
 # Set theme color here
 # Choose from: black (default), blue, gray, magenta, orange, red, white, and yellow.
-theme_color: orange
+theme_color: white
 
 # Build settings
 markdown: kramdown

@@ -57,14 +57,13 @@
     {% include footer.html %}
 
   </body>
-    
-  <script src="assets/particles.js"></script>    
+  <script>{% include particles.min.js %}</script>    
   <script>
     /* particlesJS.load(@dom-id, @path-json, @callback (optional)); */
-    particlesJS.load('particles-js', 'assets/particles.json', function() {
+    particlesJS.load('particles-js', '{{ 'assets/particles.json' | absolute_url }}', function() {
       console.log('callback - particles.js config loaded');
     });    
-    </script>
+  </script>
 
 
 </html>
