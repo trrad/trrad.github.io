@@ -31,3 +31,4 @@ theme_color: white
 
 # Build settings
 markdown: kramdown
+highlighter: pygments
