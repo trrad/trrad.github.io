@@ -7,7 +7,7 @@
 
     <div>
 
-      <header class="header-background" id="particles-js">
+      <header class="header-background">
 
         <div class="clearfix border-bottom-thick header-border">
           <ul class="list-reset right py-1 header-text font-smoothing">
@@ -20,15 +20,15 @@
             {% endfor %}
           </ul>
         </div>
-
+        <div class="clearfix" id="stars">
         <div class="container mx-auto px-2 mb-2 clearfix header-text">
-          <h1 class="h0 inline-block col-9 sm-width-full py-4 mt-3 header-title">{{ site.title }}</h1>
+          <h1 class="h0 inline-block col-9 sm-width-full py-2 mt-4 header-title">{{ site.title }}</h1>
 
           <div class="clearfix mb-4 py-1">
-            <div class="col-4 sm-width-full left border-top-thin">
+            <div class="col-4 sm-width-full left">
               <div class="table">
                 <div class="inline-block mt-3 mr-1">
-                  {% include dot-accent.html %}
+                  {% include dot.html %}
                 </div>
                 <div class="inline-block mt-3 mr-1">
                   {% include {{ site.social_link | default: "twitter" }}.html %}
@@ -44,6 +44,7 @@
           </div>
 
         </div>
+        </div>
       </header>
 
       <div class="container mx-auto px-2 py-4">
@@ -57,13 +58,6 @@
     {% include footer.html %}
 
   </body>
-  <script>{% include particles.min.js %}</script>    
-  <script>
-    /* particlesJS.load(@dom-id, @path-json, @callback (optional)); */
-    particlesJS.load('particles-js', '{{ 'assets/particles.json' | absolute_url }}', function() {
-      console.log('callback - particles.js config loaded');
-    });    
-  </script>
 
 
 </html>

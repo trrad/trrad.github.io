@@ -14,7 +14,7 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 title: Tim Radcliffe
-description: I build websites, offer quantitative e-commerce consulting and write about machine learning.
+description: Full-stack developer and machine learning enthusiast.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 github_repo: trrad.github.io # the GitHub repo name for your project
@@ -31,4 +31,4 @@ theme_color: magenta
 
 # Build settings
 markdown: kramdown
-highlighter: pygments
+highlighter: rouge
