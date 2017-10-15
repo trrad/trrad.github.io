@@ -1,11 +1,15 @@
 ---
 layout: category-post
-title:  "Potatoes"
+title:  "Markov Chain Portmanteaus and Computational Creativity"
 date:   2017-05-25
 categories: python
 ---
 
-Lorem ipsizzle funky fresh i'm in the shizzle boom shackalack, consectetizzle adipiscing my shizz. Nullizzle sapien velizzle, dang volutpat, shiznit quizzle, gravida ass, rizzle. Pot get down get down tortor. Sed erizzle. Black go to hizzle dolizzle dapibizzle turpis fo shizzle my nizzle yo. Maurizzle pellentesque nibh et check it out. Bow wow wow check it out tortizzle. Pellentesque for sure rhoncizzle bow wow wow. In owned habitasse brizzle dictumst. Nizzle dapibizzle. Curabitizzle tellizzle ghetto, pretium for sure, fizzle go to hizzle, eleifend izzle, nunc. Dope suscipizzle. Integizzle boom shackalack velit ass purus.
+Simple Markov chains have been the workhorse of blogposts and websites about text generation for many years. They are suprisingly effective at producing quite realistic sentences trained from a quite small corpus. A year ago I wrote a simple twitter bot trained on Trump's tweet history and it was retweeted and favourited a suprising amount, and often by people who hadn't realized the joke. Some of this can definitely be chalked up to bots retweeting bots - but for me it was certainly a demonstration of their effectiveness.
+
+In terms of state of the art text generation, they've been surpassed by LTSMs and other RNN variants that are able to learn to condition themselves on longer or shorter sequences with different weights or do things like include noise in the activations to allow for 'true' creativity - but the simple Markov chain model still has it's appeal.
+
+This post will provide some cute Py3 code for building Markov chains from any iterable, outline exactly what a Markov chain does and demonstrate a unique application for creating novel portmanteaus (hybrid words) from two seperate corpora (I had to double check this was the correct pluralization for corpus, but I'm sticking to it.)
 
 ### Some Quick Markov Chain Code for Syntax Highlighting
 

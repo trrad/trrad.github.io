@@ -5,9 +5,11 @@ permalink: /about/
 ---
 ##The Basics
 
-I'm a fullstack developer who likes to work mostly in Python. My main interests are related to machine learning, but I've worked on embedded, application and web development projects quite extensively as well. I'm especially excited to talk about probabalistic models, Bayesian methods, and unsupervised and supervised learning of highly structured semantic formats (ie: natural langauge).
+I'm a fullstack developer who likes to work mostly in Python. My main interests are related to machine learning, but I've worked on embedded, application and web development projects quite extensively as well. I'm especially excited to talk about generative & probabalistic models, Bayesian methods, and (un+)supervised learning of structured, semantic formats (ie: natural langauge).
 
 I made this blog to allow me to write about programming, machine learning and document my projects. I think a lot of math and programming, particularily the parts concerning probability, is often taught quite poorly - I strive to be able to fully explain the intiution behind everything I use, and hope to do some of that here.
+
+It will also hopefully motivate me to clean up some code and release some of the code that's been building up dust ony my harddrives.
 
 ## ...more
 

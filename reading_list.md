@@ -18,3 +18,12 @@ permalink: /my-awesome-category/
 filename: my-awesome-category.html
 
 -->
+I use this page to archive great resources for topics of interest.
+
+#Papers
+
+###Text generation
+
+#Books
+
+#Blogroll
