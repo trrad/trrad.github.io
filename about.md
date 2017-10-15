@@ -3,19 +3,14 @@ layout: page
 title: About
 permalink: /about/
 ---
+##The Basics
 
-Swiss is a bold Jekyll theme inspired by Swiss design and the works of Massimo Vignelli. This theme lends itself well to sites heavy on written content.
+I'm a fullstack developer who likes to work mostly in Python. My main interests are related to machine learning, but I've worked on embedded, application and web development projects quite extensively as well. I'm especially excited to talk about probabalistic models, Bayesian methods, and unsupervised and supervised learning of highly structured semantic formats (ie: natural langauge).
 
-### Features:
-* Mobile-first design ensures this theme performs fastest on mobile while scaling elegantly to desktop-size screens.
-* Designed for blogs and sites heavy on written content, with bold typography styles, homepage summaries, and previous/next snippets.
-* Supports a wide range of HTML elements and markdown.
-* Flexible styles that can be reused for customization without adding additional CSS.
-* Simple styling for code snippets (if you want something with syntax highlighting, checkout ....)
-* Dynamically generated navigation links. See docs below for adding pages with specific post category for-loops.
+I made this blog to allow me to write about programming, machine learning and document my projects. I think a lot of math and programming, particularily the parts concerning probability, is often taught quite poorly - I strive to be able to fully explain the intiution behind everything I use, and hope to do some of that here.
 
-## Themes
+## ...more
 
-## Browser Support
+I have a pretty broad range of interests - in university I was heavily involved in competititive debate, and before that my main time sink was competitive robotics. In my last job I designed, repaired and improved e-commerce websites for a large variety of clients, both big and small and even built a few stores of my own. The next challenge for me is to use machine learning and statistics to help solve some hard problems.
 
-## Installation
+This blog is hosted on github pages, and is a modified version of the Swiss jekyll theme by brocolinni.
