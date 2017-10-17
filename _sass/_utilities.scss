@@ -180,3 +180,13 @@
     text-decoration: none;
   }
 }
+
+.portfolio {
+  height:80vh;
+  text-align:center;
+
+  div.title { background-color:rgba(34, 102, 153, 0.85);}
+  .h4 { color:white; text-transform:uppercase; font-weight:lighter;}
+
+  img { max-width:100%; }
+}

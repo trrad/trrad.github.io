@@ -22,8 +22,27 @@ I use this page to archive great resources for topics of interest.
 
 #Papers
 
-###Text generation
+###Text generation / NLP
+
+###Autoencoding
+
+###Information Theory
+
+###Bayes
+
+###Other
 
 #Books
+Hastie, precup, hofstadter, DL goodfellow/bengio
 
 #Blogroll
+jeremy kun
+inferenc.vc
+
+#Tools
+
+###Libraries
+Edward, Spacy
+
+###Generative Art
+Blender, nodebox, processing

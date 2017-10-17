@@ -1,7 +1,7 @@
 ---
 layout: category-post
-title:  "Markov Chain Portmanteaus and Computational Creativity"
-date:   2017-05-25
+title:  "Markov Chain Portmanteaus"
+date:   2017-09-10
 categories: python
 ---
 
