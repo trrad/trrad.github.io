@@ -3,7 +3,7 @@ layout: page
 title: About
 permalink: /about/
 ---
-##The Basics
+## The Basics
 
 I'm a fullstack developer who likes to work mostly in Python. My main interests are related to machine learning, but I've worked on embedded, application and web development projects quite extensively as well. I'm especially excited to talk about generative & probabalistic models, Bayesian methods, and (un+)supervised learning of structured, semantic formats (ie: natural langauge).
 

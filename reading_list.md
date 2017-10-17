@@ -20,29 +20,29 @@ filename: my-awesome-category.html
 -->
 I use this page to archive great resources for topics of interest.
 
-#Papers
+# Papers
 
-###Text generation / NLP
+### Text generation / NLP
 
-###Autoencoding
+### Autoencoding
 
-###Information Theory
+### Information Theory
 
-###Bayes
+### Bayes
 
-###Other
+### Other
 
-#Books
+# Books
 Hastie, precup, hofstadter, DL goodfellow/bengio
 
-#Blogroll
+# Blogroll
 jeremy kun
 inferenc.vc
 
-#Tools
+# Tools
 
-###Libraries
+### Libraries
 Edward, Spacy
 
-###Generative Art
+### Generative Art
 Blender, nodebox, processing
