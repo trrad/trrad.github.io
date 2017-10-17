@@ -9,7 +9,7 @@ I'm a fullstack developer who likes to work mostly in Python. My main interests 
 
 I made this blog to allow me to write about programming, machine learning and document my projects. I think a lot of math and programming, particularily the parts concerning probability, is often taught quite poorly - I strive to be able to fully explain the intiution behind everything I use, and hope to do some of that here.
 
-It will also hopefully motivate me to clean up some code and release some of the code that's been building up dust ony my harddrives.
+It will also hopefully motivate me to clean up and release some of the code that's been building up dust on my harddrives.
 
 ## ...more
 

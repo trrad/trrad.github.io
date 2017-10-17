@@ -17,35 +17,61 @@ This post will provide some cute, largely unoptimized Py3 code for building Mark
 from itertools import islice
 import random
 
-def make_n_grams(self,iter, n):
-    offset_lists = (islice(iter,i,None) for i in range(n)) #creates a tuple of input iterable offset by 1 through n
-    return zip(*offset_lists) # here we unpack that tuple and zip it back up into a list of n-grams
+class Chain:
 
-def n_gramify_file(self,file,n):
-    with open(file,'r') as file:
-        for line in file:
-                yield self.make_n_grams(line,n)
+    def __init__(self,corpus,seperator,ngram_size=3):
+        self.seperator = seperator
+        self.ngram_size = ngram_size
+        self.begin_states = []
 
-def build_markov_chain(self,ngrams):
-    """Here we build a dict of dicts
-        - top level keys are all possible states
-        - 2nd level keys are the possible predictions for each state.
-        - values stored are a count of prediction frequency in text corpus
-     """
-    model = {}
-    for ngram_list in ngrams:
-        for ngram in ngram_list:
-            state = ngram[:-1] #state is all but the last item
-            prediction = ngram[-1:] #prediction is the last item
-            #print(state,prediction,ngram)
+        ngrams = self.n_gramify_file(corpus,self.ngram_size)
 
-            if state not in model:
-                model[state] = {}
+        self.chain = self.build_markov_chain(ngrams)
 
-            if prediction not in model[state]:
-                model[state][prediction] = 0
+    def make_n_grams(self,iter, n):
+        offset_lists = (islice(iter,i,None) for i in range(n)) #creates a tuple of input iterable offset by 1 through n
+        return zip(*offset_lists) # here we unpack that tuple and zip it back up into a list of n-grams
 
-            model[state][prediction] += 1
-    return model
+    def n_gramify_file(self,file,n):
+        with open(file,'r') as file:
+            for line in file:
+                    yield self.make_n_grams(line,n)
+
+    def build_markov_chain(self,ngrams):
+        """Here we build a dict of dicts that represents our markov chain.
+            - top level keys are all possible states
+            - 2nd level keys are the possible predictions for each state.
+            - values stored are a count of prediction frequency in text corpus
+         """
+        model = {}
+        for ngram_list in ngrams:
+            self.begin_states.append(next(ngram_list))  # append first ngram to valid begin states list
+            for ngram in ngram_list:
+                state = ngram[:-1] #state is all but the last item
+                prediction = ngram[-1:] #prediction is the last item
+
+                if state not in model:
+                    model[state] = {}
+
+                if prediction not in model[state]:
+                    model[state][prediction] = 0
+
+                model[state][prediction] += 1
+        return model
+
+    def generate(self):
+        """This function returns a generator expression that will iterate through a walk down the chain given an
+         initial state (if not provided will be chosen randomly). Once complete, the object will be discarded.
+        """
+        choice = random.choice(self.begin_states)
+        while self.seperator not in choice:
+            state = choice[-(self.ngram_size-1):]
+            if self.seperator not in state:
+                prediction = random.choice(list(self.chain[state]))
+            else:
+                prediction = self.seperator
+            choice += prediction
+        return ''.join(choice)
+
 
 {%endhighlight%}
