@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Reading List
+title: Resources
 permalink: /reading-list/
 ---
 
@@ -36,13 +36,16 @@ I use this page to archive great resources for topics of interest.
 Hastie, precup, hofstadter, DL goodfellow/bengio
 
 # Blogroll
-jeremy kun
-inferenc.vc
+[Math ∩ Programming](https://jeremykun.com/){:target="_blank"} - a good place for easy to understand introductions to lots of derivations in math and computing.
+
+[Inference.vc](http://www.inference.vc/){:target="_blank"} - a fantastic resource for gaining insight into machine learning via information theory.
 
 # Tools
 
 ### Libraries
-Edward, Spacy
+[Edward](http://edwardlib.org/){:target="_blank"} - a Pythonic probabalistic programming language built on top of Tensorflow. RandomVariables as first class objects and compositional models & inference.
+
+[spaCy](https://spacy.io){:target="_blank"} - my favourite Python library for all things NLP.
 
 ### Generative Art
 Blender, nodebox, processing
