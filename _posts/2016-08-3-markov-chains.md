@@ -82,7 +82,7 @@ class Chain:
             last_state = state
             state = state[1:] + tuple(prediction)
             yield last_state, prediction
-            
+
 {%endhighlight%}
 
 A few quick notes on this code:
@@ -95,7 +95,7 @@ A few quick notes on this code:
 
 The logic of Markov chains for text generation is quite simple - the theory is that by looking at the frequency that words or characters follow each other in the corpus, we can create a probabalistic model of it. What the 'Markov' part of the name means is that it's a Markov process (memoryless) - so the prediction only depends on the current state. In this instance that means that we have a sliding window approach to the state, as it is only the last n-1 characters of the string generated - it doesn't care what path has brought the code to where it is, it simply looks at the previous 2 characters (in the case we're using tri-grams) and says "in the training corpus, these 2 characters were followed by an *e* 25% of the time and an *a* 75% of the time", and makes a selection based on that probability.
 
-###Portmanteaus
+### Portmanteaus
 
 To return to the title of the post, and my original intentin in writing this code - what I want to do is create a program that can take 2 sets of words and create novel combinations of them that flow together smoothly. I enjoy word-play and automating my humour, and this is a step down that path.
 
