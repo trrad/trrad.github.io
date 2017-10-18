@@ -9,10 +9,9 @@ Simple Markov chains have been the workhorse of blogposts and websites about tex
 
 In terms of state of the art text generation, they've been surpassed by LTSMs and other RNN variants that are able to learn to condition themselves on longer or shorter sequences with different weights or do things like include noise in the activations to allow for 'true' creativity - but the simple Markov chain model still has it's appeal.
 
-This post will provide some cute, largely unoptimized Py3 code for building Markov chains from any iterable, outline exactly what a Markov chain does and demonstrate a unique application for creating novel portmanteaus (hybrid words) from two seperate corpora (I had to double check this was the correct pluralization for corpus, but I'm sticking to it.)
+This post will provide some rough, largely unoptimized Py3 code for building Markov chains from any iterable, outline exactly what a Markov chain does and demonstrate a unique application for creating novel portmanteaus (hybrid words) from two seperate corpora (I had to double check this was the correct pluralization for corpus, but I'm sticking to it.)
 
-### Some Quick Markov Chain Code for Syntax Highlighting
-
+### The Code
 {%highlight python%}
 from itertools import islice
 import random
@@ -24,15 +23,17 @@ class Chain:
         self.ngram_size = ngram_size
         self.begin_states = []
 
-        ngrams = self.n_gramify_file(corpus,self.ngram_size)
-
+        ngrams = self.n_gramify_file(corpus,ngram_size)
         self.chain = self.build_markov_chain(ngrams)
 
-    def make_n_grams(self,iter, n):
-        offset_lists = (islice(iter,i,None) for i in range(n)) #creates a tuple of input iterable offset by 1 through n
-        return zip(*offset_lists) # here we unpack that tuple and zip it back up into a list of n-grams
+    def make_n_grams(self,iter, n=3):
+        """Here we create a tuple of the the input iterable offset by 1 through n.
+        We then zip up these offset iterables to create the desired n-grams."""
+        offset_lists = (islice(iter,i,None) for i in range(n))
+        return zip(*offset_lists)
 
     def n_gramify_file(self,file,n):
+        """Simple helper function to load ngrams in from a file."""
         with open(file,'r') as file:
             for line in file:
                     yield self.make_n_grams(line,n)
@@ -45,10 +46,11 @@ class Chain:
          """
         model = {}
         for ngram_list in ngrams:
-            self.begin_states.append(next(ngram_list))  # append first ngram to valid begin states list
-            for ngram in ngram_list:
+            for i, ngram in enumerate(ngram_list):
                 state = ngram[:-1] #state is all but the last item
-                prediction = ngram[-1:] #prediction is the last item
+                if i == 0: #append first ngram to valid begin states list
+                    self.begin_states.append(state)
+                prediction = ngram[-1] #prediction is the last item
 
                 if state not in model:
                     model[state] = {}
@@ -59,19 +61,47 @@ class Chain:
                 model[state][prediction] += 1
         return model
 
-    def generate(self):
-        """This function returns a generator expression that will iterate through a walk down the chain given an
-         initial state (if not provided will be chosen randomly). Once complete, the object will be discarded.
+    def predict(self,state):
+        """Chooses the prediction given the state, using the frequency
+        of occurrence to determine it's chance."""
+        offset = random.randint(0, sum(iter(self.chain[state].values())) - 1)
+        for key, value in iter(self.chain[state].items()):
+            if offset < value:
+                return key
+            offset -= value
+
+    def generate(self,begin_state=None):
+        """This function returns a generator that will iterate through a walk down
+        the chain given an initial state (if not provided will be chosen randomly).
         """
-        choice = random.choice(self.begin_states)
-        while self.seperator not in choice:
-            state = choice[-(self.ngram_size-1):]
-            if self.seperator not in state:
-                prediction = random.choice(list(self.chain[state]))
-            else:
-                prediction = self.seperator
-            choice += prediction
-        return ''.join(choice)
+        if begin_state == None:
+            state = random.choice(self.begin_states)
 
-
+        while state in self.chain.keys():
+            prediction = self.predict(state)
+            last_state = state
+            state = state[1:] + tuple(prediction)
+            yield last_state, prediction
+            
 {%endhighlight%}
+
+A few quick notes on this code:
+
+  - it's not highly optimized. The topic of a future post may be re-writing this for dealing with very large corpora quickly (likely using numpy arrays as transition tables instead of the dict structure, and better I/O reading.)
+
+  - I've used generators at most points, so it should already be able to handle pretty unreasonably long strings without memory constraint issues. The other advantage of this approach will be seen in section 2.
+
+  - the interface isn't quite polished - a good idea for extending this code would be to allow for a custom weight function for **predict** and better utilities for loading the corpus in different forms (different seperators, file formats, etc.)
+
+The logic of Markov chains for text generation is quite simple - the theory is that by looking at the frequency that words or characters follow each other in the corpus, we can create a probabalistic model of it. What the 'Markov' part of the name means is that it's a Markov process (memoryless) - so the prediction only depends on the current state. In this instance that means that we have a sliding window approach to the state, as it is only the last n-1 characters of the string generated - it doesn't care what path has brought the code to where it is, it simply looks at the previous 2 characters (in the case we're using tri-grams) and says "in the training corpus, these 2 characters were followed by an *e* 25% of the time and an *a* 75% of the time", and makes a selection based on that probability.
+
+###Portmanteaus
+
+To return to the title of the post, and my original intentin in writing this code - what I want to do is create a program that can take 2 sets of words and create novel combinations of them that flow together smoothly. I enjoy word-play and automating my humour, and this is a step down that path.
+
+So in terms of the Markov chain, what I want to do is this:
+
+1. Start off with a walk down a chain from one corpus.
+2. Continue this walk until I hit a state that occurs in the 2nd corpus's chain.
+3. Transition to walking down a chain from the 2nd corpus, starting at this state.
+4. If the transition state isn't found or a transition made, start over.

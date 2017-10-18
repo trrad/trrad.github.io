@@ -40,6 +40,8 @@ Hastie, precup, hofstadter, DL goodfellow/bengio
 
 [Inference.vc](http://www.inference.vc/){:target="_blank"} - a fantastic resource for gaining insight into machine learning via information theory.
 
+[Distill.pub](http://www.distill.pub/){:target="_blank"} - gold standard for presentation in scientific explanations.
+
 # Tools
 
 ### Libraries
