@@ -18,22 +18,7 @@ permalink: /my-awesome-category/
 filename: my-awesome-category.html
 
 -->
-I use this page to archive great resources for topics of interest.
-
-# Papers
-
-### Text generation / NLP
-
-### Autoencoding
-
-### Information Theory
-
-### Bayes
-
-### Other
-
-# Books
-Hastie, precup, hofstadter, DL goodfellow/bengio
+I use this page to archive & promote great resources and tools for topics of interest.
 
 # Blogroll
 [Math ∩ Programming](https://jeremykun.com/){:target="_blank"} - a good place for easy to understand introductions to lots of derivations in math and computing.
@@ -45,9 +30,11 @@ Hastie, precup, hofstadter, DL goodfellow/bengio
 # Tools
 
 ### Libraries
-[Edward](http://edwardlib.org/){:target="_blank"} - a Pythonic probabalistic programming language built on top of Tensorflow. RandomVariables as first class objects and compositional models & inference.
+[Edward](http://edwardlib.org/){:target="_blank"} - a Pythonic probabalistic programming language built on top of Tensorflow. RandomVariables as first class objects and serve as the building blocks for compositional models & inference.
 
 [spaCy](https://spacy.io){:target="_blank"} - my favourite Python library for all things NLP.
 
 ### Generative Art
-Blender, nodebox, processing
+[Blender](http://blender.org/){:target="_blank} - advanced 3D animation and modelling tool with a Python scripting interface.
+
+[nodebox](https://www.nodebox.net/node/){:target="_blank} - a tool built for exploring generative design with an extensible interface.
