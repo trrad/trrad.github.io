@@ -97,7 +97,7 @@ The logic of Markov chains for text generation is quite simple - the theory is t
 
 ### Portmanteaus
 
-To return to the title of the post, and my original intent in in writing this code - what I want to do is create a program that can take 2 sets of words and create novel combinations of them that flow together smoothly. I enjoy word-play and automating my humour, and this is a step down that path.
+To return to the title of the post, and my original intent in in writing this code - what I want to do is create a program that can take 2 sets of words and create novel combinations of them (or new part-words drawn from a similar distribution) that flow together smoothly.
 
 So in terms of the Markov chain, what I want to do is this:
 
