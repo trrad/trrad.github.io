@@ -18,7 +18,7 @@ code {
 
 .prose {
 
-  p, ol, ul {
+  p, ol, ul, .MathJax_Display {
     font-size: $prose-font-size;
     margin-bottom: 1em;
     width: 100%;
