@@ -33,4 +33,19 @@ In the Bayesian approach, my goal is no longer to estimate single values for the
 
 $$ \underbrace{f(\mu_i,\sigma\mid Y,X)}_{\color{red}{\text{posterior}}} \propto \underbrace{\prod_{i=1}^n \mathcal{N}(y_i\mid \mu_i, \sigma)}_{\text{likelihood}} \; \underbrace{f_{\mu}(\mu) \, f_{\sigma}(\sigma)}_{\text{priors}} $$
 
-In the interest of keeping this post simple for now, I will gloss over some of the details of how we solve for the posterior. Suffice it's a hard problem due to an intractable integral, and that in Edward's case, we get around this with variational inference, where we approximate the posterior by iteratively reducing it's divergence from a different *variational distribution*, chosen from a limited family of distributions. The other method is to use Markov-Chain Monte-Carlo (MCMC) techniques to create a graph such that a random-walk eventually converges to a stationary distribution that approximates the posterior.
+In the interest of keeping this post simple for now, I will gloss over some of the details of how we solve for the posterior. Suffice it to say it's a hard problem due to an intractable integral, and for the purposes of this post we will be getting around this with variational inference, where we approximate the posterior by iteratively reducing it's divergence from a different *variational distribution*, chosen from a limited family of distributions, described by some variational paramaters *V*. The other method is to use Markov-Chain Monte-Carlo (MCMC) techniques to create a graph such that a random-walk eventually converges to a stationary distribution that approximates the posterior.
+
+***
+
+
+Let's look at some simple test cases and see how our results differ. Let's start with the toy example where I have just 3, 1-dimensional data points $X=[0,3,4]$ and $Y=[1,6,10]$. Here are two plots: the left shows 5 samples from the posterior distibutions for the regression coefficients calculated with certain assumptions, and the right shows maximum likelihood estimation (under the assumption of normally distributed errors).
+
+![var(y) = 1]({{ "/assets/bayes-regression/bayes_1.png" | absolute_url }})
+![var(y) = 1]({{ "/assets/bayes-regression/ols_1.png" | absolute_url }})
+
+Hopefully unsuprisingly, these graphs look pretty similar - although it probably seems rather less useful to have 5 different random lines instead of 1. And if we look at the mean-squared error, the classical ordinary-least-squares approach actually has lower error! Why would you ever want to use the Bayesian approach instead? Let's take a look at these visualizations of 10,000 samples from the posterior distribution for the coeffecients for the slope & intercept.
+
+![samples of the slope]({{ "/assets/bayes-regression/bayes_posterior_wdist_1.png" | absolute_url }})
+![samples of the intercept]({{ "/assets/bayes-regression/bayes_posterior_bdist_1.png" | absolute_url }})
+
+The vertical blue lines mark the 5th and 95th percentiles of the sample - that is, the range I can say with 90% confidence that the true values of my parameters fall. In the Bayesian world, these are known as **credible intervals** and are contrast to confidence intervals the frequentist approach uses - although again they are really asking totally different questions.
