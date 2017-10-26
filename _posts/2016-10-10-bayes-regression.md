@@ -3,7 +3,7 @@ layout: post
 title:  "What is Bayesian Linear Regresion Doing?"
 date:   2017-10-10
 ---
-Linear regression is a basic statistical tool that pretty much anyone who has worked with data is familiar with. In this post I will walk through a simple practical example using Edward, a Pythonic probabalistic programming library. Before diving into that, a quick review of some of the math involved in the 'classical' approach. This post is also here to test out the MathJax running on the site for rendering equations and see if I can remember any LaTex.
+Linear regression is a basic statistical tool that pretty much anyone who has worked with data is familiar with. In this post, I'm going to discuss some of the math and ideas behind the Bayesian approach, and try to do so in a way that will be easy to engage with for someone with a more traditional frequentist background. In the second section, I will walk through a number of examples and graphs of different situations of Bayesian regression to hopefully help give an intuitive understanding of the effect of things like sample size, variance and your choice of priors. A future post will then try to extend these ideas to dealing with alternate and more complex models and shift the terminology from parameter estimation to inference over random latent variables.
 
 Given *n* observations and *d* features per observation, my independent variable can be represented by a $n \times d$ matrix:
 
@@ -48,4 +48,24 @@ Hopefully unsuprisingly, these graphs look pretty similar - although it probably
 ![samples of the slope]({{ "/assets/bayes-regression/bayes_posterior_wdist_1.png" | absolute_url }})
 ![samples of the intercept]({{ "/assets/bayes-regression/bayes_posterior_bdist_1.png" | absolute_url }})
 
-The vertical blue lines mark the 5th and 95th percentiles of the sample - that is, the range I can say with 90% confidence that the true values of my parameters fall. In the Bayesian world, these are known as **credible intervals** and are contrast to confidence intervals the frequentist approach uses - although again they are really asking totally different questions.
+The vertical blue lines mark the 5th and 95th percentiles of the sample - that is, the range I can say with 90% confidence that the true values of my parameters fall. In the Bayesian world, these are known as **credible intervals** and are contrast to confidence intervals the frequentist approach uses - although again they are really asking totally different questions. But in my opinion, the Bayesian question is generally the one you actually intended to ask, and it provides an easy to understand range of uncertainty that doesn't require imagining the results of hundreds of unperformed experiments.
+
+Let's take a look at another example - in this case I've generated some data from a linear model + noise - the fit is graphed the same as above, but now on the posterior graph I've included a green line showing the true value of the generating parameter.
+
+Here are the same graphs, generated from only 10 samples:
+
+![var(y) = 1]({{ "/assets/bayes-regression/bayes_2.png" | absolute_url }})
+
+![samples of the slope]({{ "/assets/bayes-regression/bayes_posterior_wdist_2.png" | absolute_url }})
+![samples of the intercept]({{ "/assets/bayes-regression/bayes_posterior_bdist_2.png" | absolute_url }})
+
+And now with 1,000 samples:
+
+![var(y) = 1]({{ "/assets/bayes-regression/bayes_3.png" | absolute_url }})
+
+![samples of the slope]({{ "/assets/bayes-regression/bayes_posterior_dist_3.png" | absolute_url }})
+![samples of the intercept]({{ "/assets/bayes-regression/bayes_posterior_bdist_3.png" | absolute_url }})
+
+You can see a narrowing of the credible intervals that reflects the fact that our degree of certainty increases as the size of the sample does, which is what you would expect. [Note: I initially had an incorrect value for variance on the prior of the intercept - this resulted in the true value falling outside the range in the 10 sample case, but not the 1,000 sample case - this is because as we see more data, our prior becomes less important to the model.]
+
+That's all I'll write in this post for now, but I'm working on an interface that will allow the user to adjust the sample size, priors, effect, etc. and see the results easily for themselves. I think increasing the accesability of Bayesian tools to those who don't need to grasp the math behind the inference stage is something that is very important, and can have a large impact on how stats are done across the social sciences. To this end, this post is a first exploratory step in writing a wrapper for parts of Edward to make it more neophyte friendly.
