@@ -17,7 +17,8 @@ SELECT
 FROM country
 LEFT JOIN city on city.country_id = country.id
 GROUP BY country.name
-HAVING sum(city.INTfield) > 10.0
+HAVING sum(city.population) > 10000.0
 ``` 
+The above query returns a list of countries, and a count of their cities where the sum of all their cities population (an integer field, as we count every person as a whole nowadays) is over 10,000. Or you might expect it to.
 
 I couldn't find any note on this in the Redshift documentation or elsewhere, so hopefully this can save someone some time in the future. You can easily solve the issue using the CAST(field AS type) function, or in this case, simply removing the decimal from the comparison.
