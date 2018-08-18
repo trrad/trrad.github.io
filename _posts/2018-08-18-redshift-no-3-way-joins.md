@@ -20,4 +20,4 @@ GROUP BY country.name
 HAVING sum(city.INTfield) > 10.0
 ``` 
 
-I couldn't find any note on this in the Redshift documentation or elsewhere, so hopefully this can save someone some time in the future.
+I couldn't find any note on this in the Redshift documentation or elsewhere, so hopefully this can save someone some time in the future. You can easily solve the issue using the CAST(field AS type) function, or in this case, simply removing the decimal from the comparison.
