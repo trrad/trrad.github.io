@@ -15,6 +15,6 @@ I grew up in Kingston ON, moved to Montreal for school, and then to Vancouver BC
 
 ## ...more
 
-You can find me on [twitter]{https://twitter.com/t_radcliffe}.
+You can find me on [twitter](https://twitter.com/t_radcliffe).
 
 This blog is hosted on github pages, and is a modified version of the [swiss jekyll theme by brocolinni.](https://github.com/broccolini/swiss){:target="_blank"}
