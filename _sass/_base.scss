@@ -68,13 +68,7 @@ a:hover {
   width:100%;
   margin:0 auto;
   background-color:	rgba(34, 102, 153, 0.2);
-  background-image:
-  linear-gradient(rgba(255,255,255,0.3) 2px, transparent 2px),
-  linear-gradient(90deg, rgba(255,255,255,0.3) 2px, transparent 2px),
-  linear-gradient(rgba(255,255,255,.3) 1px, transparent 1px),
-  linear-gradient(90deg, rgba(255,255,255,.3) 1px, transparent 1px);
-  background-size:200px 200px, 200px 200px, 40px 40px, 40px 40px;
-  background-position:-2px -2px, -2px -2px, -1px -1px, -1px -1px
+  background-image: "/assets/1500x500.jpeg";
 }
 
 .header-text {
