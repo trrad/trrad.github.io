@@ -53,12 +53,12 @@ h5, .h5 { font-size: $h5-size; }
 h6, .h6 { font-size: $h6-size; text-transform: uppercase; letter-spacing: 0.02em; }
 
 a {
-  color: darkslateblue;
+  color: orange;
   text-decoration: none;
 }
 
 a:hover {
-  text-decoration: underline;
+  text-decoration: underline orange 0.5px;
 }
 
 #stars {

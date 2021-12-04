@@ -1,4 +1,4 @@
-Based off of the Swiss Jekyll Theme 
+Based off of the Swiss Jekyll Theme, used for my personal site/blog.
 
 ## License
 
